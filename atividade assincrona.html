@@ -1,0 +1,46 @@
+<style>
+    body{
+        display:flex;
+        flex-direction:row;
+    }
+</style>
+<script>
+    async function mostrarAnimeFactsRestApi (nome){
+        const result = await fetch(`https://anime-facts-rest-api.herokuapp.com/api/v1/${nome}`)
+        const anime = await result.json();
+        console.log(anime)
+        const img = anime.img
+        const imagem = `<img src="${img}">`;
+        document.body.insertAdjacentHTML('afterbegin', imagem);
+    }
+
+    mostrarAnimeFactsRestApi("naruto")
+ 
+
+    async function mostrarChuckNorris (){
+        const result1 = await fetch(`https://api.chucknorris.io/jokes/random`)
+        const norris = await result1.json();
+        console.log(norris)
+        const valueNorris = norris.value
+        const pNorris = `<p>${valueNorris}</p>`;
+        document.body.insertAdjacentHTML('afterbegin', valueNorris);
+    }
+
+    mostrarChuckNorris()
+
+
+    async function rick(n) {
+	const resultRick = await fetch (`https://rickandmortyapi.com/api/character/${n}`);
+	const rick = await resultRick.json();
+    console.log(rick)
+    const imgRick = rick.image
+    const imagemRick = `<img src="${imgRick}">`;
+        document.body.insertAdjacentHTML('afterbegin', imagemRick);
+}
+
+    rick(1)
+
+
+
+
+</script>
